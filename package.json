@@ -8,14 +8,16 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npx -n '--experimental-json-modules @sonicoriginalsoftware/jester"
+    "test": "npx -n '--experimental-json-modules' @sonicoriginalsoftware/jester"
   },
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonicoriginalsoftware/pwa-tools.git"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "keywords": [
     "web",
     "componets",

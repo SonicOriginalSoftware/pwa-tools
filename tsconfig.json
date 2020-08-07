@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["ES6", "DOM", "WebWorker", "WebWorker.ImportScripts"],
+    "lib": ["ES6"],
     "module": "ESNext",
     "target": "ES6",
     "allowJs": true,
