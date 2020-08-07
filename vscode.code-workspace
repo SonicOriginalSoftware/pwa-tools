@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {},
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug on Chrome",
+        "type": "pwa-chrome",
+        "request": "launch",
+        "url": "http://localhost:5000",
+        "webRoot": "${workspaceFolder}"
+      },
+      {
+        "name": "Debug on Firefox",
+        "type": "firefox",
+        "request": "launch",
+        "reAttach": true,
+        "url": "http://localhost:5000/",
+        "webRoot": "${workspaceFolder}"
+      },
+      {
+        "name": "Debug server",
+        "type": "node",
+        "request": "launch",
+        "runtimeArgs": ["--experimental-json-modules"],
+        "skipFiles": ["<node_internals>/**"],
+        "program": "server.js"
+      }
+    ]
+  }
+}

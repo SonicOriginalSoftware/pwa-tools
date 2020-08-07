@@ -1,0 +1,37 @@
+{
+  "name": "@sonicoriginalsoftware/pwa-tools",
+  "version": "0.1.0",
+  "description": "Command line tools for managing the pwa-framework",
+  "directories": {
+    "bin": "bin",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npx -n '--experimental-json-modules @sonicoriginalsoftware/jester"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonicoriginalsoftware/pwa-tools.git"
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "keywords": [
+    "web",
+    "componets",
+    "front-end",
+    "framework",
+    "app"
+  ],
+  "author": "Nathan Blair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonicoriginalsoftware/pwa-tools/issues"
+  },
+  "homepage": "https://github.com/sonicoriginalsoftware/pwa-tools#readme",
+  "devDependencies": {
+    "@sonicoriginalsoftware/jester": "^0.2.4",
+    "@types/node": "^14.0.27"
+  },
+  "dependencies": {}
+}
