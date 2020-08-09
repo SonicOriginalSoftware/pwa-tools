@@ -9,27 +9,37 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Debug on Chrome",
-        "type": "pwa-chrome",
-        "request": "launch",
-        "url": "http://localhost:5000",
-        "webRoot": "${workspaceFolder}"
-      },
-      {
-        "name": "Debug on Firefox",
-        "type": "firefox",
-        "request": "launch",
-        "reAttach": true,
-        "url": "http://localhost:5000/",
-        "webRoot": "${workspaceFolder}"
-      },
-      {
-        "name": "Debug server",
-        "type": "node",
-        "request": "launch",
+        "name": "Debug Node",
+        "program": "${workspaceFolder}/bin/main.js",
+        "args": [],
         "runtimeArgs": ["--experimental-json-modules"],
-        "skipFiles": ["<node_internals>/**"],
-        "program": "server.js"
+        "request": "launch",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "node"
+      },
+      {
+        "name": "Debug Init",
+        "program": "${workspaceFolder}/bin/main.js",
+        "args": ["init", "--target-clone-directory=dummy"],
+        "runtimeArgs": ["--experimental-json-modules"],
+        "request": "launch",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "node"
+      },
+      {
+        "name": "Debug Tests",
+        "program": ".\\node_modules\\@sonicoriginalsoftware\\jester\\bin\\jester.js",
+        "args": [],
+        "runtimeArgs": ["--experimental-json-modules"],
+        "request": "launch",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "node"
       }
     ]
   }
