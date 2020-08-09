@@ -1,12 +1,12 @@
 import { init } from "../lib/commands/init.js"
-import { info, error, debug } from "../lib/logger/logger.js"
+import { info, error } from "../lib/logger/logger.js"
 import { usage } from "../lib/usage.js"
 import pkg from "../package.json"
 
 const options = {
   pwa_shell_repository: "https://github.com/sonicoriginalsoftware/pwa-shell",
   pwa_server_repository: "https://github.com/sonicoriginalsoftware/pwa-server",
-  clone_target_directory: process.cwd(),
+  target_directory: process.cwd(),
 }
 
 /**
@@ -31,17 +31,17 @@ function parse_option(argument, argument_index, options) {
     case "pwa-server-repository" || "s":
       options.pwa_server_repository = value
       break
-    case "target-clone-directory" || "t":
-      debug(`Setting target-clone-directory to: ${value}`)
-      options.clone_target_directory = value
+    case "target-directory" || "t":
+      options.target_directory = value
       break
   }
 }
 
-async function main() {
+/** @param {IterableIterator<[Number, String]>} argv_entries */
+export async function main(argv_entries) {
   let command = "help"
 
-  for (const [each_arg_index, each_arg_value] of process.argv.entries()) {
+  for (const [each_arg_index, each_arg_value] of argv_entries) {
     if (each_arg_index < 2) continue
 
     each_arg_value.startsWith("-")
@@ -57,6 +57,9 @@ async function main() {
         error(err)
         process.exit(1)
       }
+      info(
+        `Initializing target directory (${options.target_directory}) complete!`
+      )
       break
     case "add-component":
       error("This command is not implemented yet!")
@@ -76,4 +79,4 @@ async function main() {
   }
 }
 
-main()
+main(process.argv.entries())
