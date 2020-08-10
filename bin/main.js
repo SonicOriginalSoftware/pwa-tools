@@ -4,8 +4,8 @@ import { usage } from "../lib/usage.js"
 import pkg from "../package.json"
 
 const options = {
-  pwa_shell_repository: "https://github.com/sonicoriginalsoftware/pwa-shell",
-  pwa_server_repository: "https://github.com/sonicoriginalsoftware/pwa-server",
+  pwa_shell_repository: "https://github.com/sonicoriginalsoftware/pwa-shell/archive/default.zip",
+  pwa_server_repository: "https://github.com/sonicoriginalsoftware/pwa-server/archive/default.zip",
   target_directory: process.cwd(),
 }
 

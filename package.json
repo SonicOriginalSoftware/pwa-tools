@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/sonicoriginalsoftware/pwa-tools#readme",
   "devDependencies": {
-    "@sonicoriginalsoftware/jester": "^0.2.4",
+    "@sonicoriginalsoftware/jester": "^0.2.5",
     "@types/node": "^14.0.27"
   },
   "dependencies": {}
