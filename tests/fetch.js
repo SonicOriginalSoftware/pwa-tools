@@ -10,10 +10,10 @@ export const assertions = {
       const test_site_content = await fetch(
         "https://sonicoriginalsoftware.github.io",
         { ":path": "/test-site/" },
-        {}
+        {},
       )
       const expected_content = "<html>\n<body>\nTest site!\n</body>\n</html>\n"
-      assert.deepStrictEqual(test_site_content[2], expected_content)
+      assert.deepStrictEqual(test_site_content[1], expected_content)
     },
   },
 }
