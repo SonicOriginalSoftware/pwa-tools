@@ -4,8 +4,10 @@ import { usage } from "../lib/usage.js"
 import pkg from "../package.json"
 
 const options = {
-  pwa_shell_archive: "https://github.com/sonicoriginalsoftware/pwa-shell/archive/default.zip",
-  pwa_server_archive: "https://github.com/sonicoriginalsoftware/pwa-server/archive/default.zip",
+  pwa_shell_archive_url:
+    "https://github.com/sonicoriginalsoftware/pwa-shell/archive/default.zip",
+  pwa_server_archive_url:
+    "https://github.com/sonicoriginalsoftware/pwa-server/archive/default.zip",
   target_directory: process.cwd(),
 }
 
@@ -26,10 +28,10 @@ function parse_option(argument, argument_index, options) {
 
   switch (argument.replace(option_regex, "")) {
     case "pwa-shell-repository" || "p":
-      options.pwa_shell_repository = value
+      options.pwa_shell_archive_url = value
       break
     case "pwa-server-repository" || "s":
-      options.pwa_server_repository = value
+      options.pwa_server_archive_url = value
       break
     case "target-directory" || "t":
       options.target_directory = value
@@ -52,7 +54,11 @@ export async function main(argv_entries) {
   switch (command) {
     case "init":
       try {
-        await init(options)
+        await init(
+          options.pwa_shell_archive_url,
+          options.pwa_server_archive_url,
+          options.target_directory
+        )
       } catch (err) {
         error(err)
         process.exit(1)
