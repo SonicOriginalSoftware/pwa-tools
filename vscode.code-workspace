@@ -22,7 +22,7 @@
       {
         "name": "Debug Init",
         "program": "${workspaceFolder}/bin/main.js",
-        "args": ["init", "--target-clone-directory=dummy"],
+        "args": ["init", ],
         "runtimeArgs": ["--experimental-json-modules"],
         "request": "launch",
         "skipFiles": [

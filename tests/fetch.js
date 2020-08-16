@@ -18,7 +18,7 @@ export const assertions = {
         assert.fail(err)
       }
       const expected_content = "<html>\n<body>\nTest site!\n</body>\n</html>\n"
-      assert.deepStrictEqual(test_site_content[1], expected_content)
+      assert.deepStrictEqual(test_site_content.data, expected_content)
     },
   },
   "HTTP/2 Check timeout": {
@@ -47,7 +47,7 @@ export const assertions = {
         { timeout: timeout }
       )
       const expected_content = "<html>\n<body>\nTest site!\n</body>\n</html>\n"
-      assert.deepStrictEqual(test_site_content[1], expected_content)
+      assert.deepStrictEqual(test_site_content.data, expected_content)
     },
     skip: true,
   },
