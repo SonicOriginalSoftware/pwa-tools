@@ -3,7 +3,8 @@ import { strict as assert } from "assert"
 import { fetch } from "../lib/net/http2_client.js"
 
 export const id = "Test network client"
-const timeout = 1000
+const timeout = 800
+const wiggle_room = 10
 
 export const assertions = {
   "HTTP/2 Fetch test site": {
@@ -30,12 +31,12 @@ export const assertions = {
       } catch (err) {
         assert.fail(err)
       }
-      const [, duration_nanoseconds] = process.hrtime(start_time)
-      const duration = duration_nanoseconds / 1000000
+      const duration = process.hrtime(start_time)[1] / 1000000
+      const comparison = timeout + wiggle_room
       assert.deepStrictEqual(
-        duration <= timeout + 10,
+        duration <= comparison,
         true,
-        `${duration} > ${timeout}`
+        `${duration} > ${comparison}`
       )
     },
   },
