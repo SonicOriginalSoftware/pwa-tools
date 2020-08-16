@@ -13,6 +13,7 @@ export const assertions = {
       const expected_content = "<html>\n<body>\nTest site!\n</body>\n</html>\n"
       assert.deepStrictEqual(test_site_content[1], expected_content)
     },
+    skip: false
   },
   "HTTPS Fetch test site": {
     function: async () => {
