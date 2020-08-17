@@ -4,13 +4,13 @@ Use this page to get a diving-in point on how to build a web app with this frame
 
 # Installing
 
-The user-centric side of the framework is oriented towards the CLI toolkit. To initialize a web app using this framework, create a directory to house the web app, `cd` into it, and run:
+The user-centric side of the framework is oriented towards the CLI toolkit. To initialize a web app using this framework run:
 
-`npx @sonicoriginalsoftware/pwa-framework init`
+`npx @sonicoriginalsoftware/pwa-tools init`
 
 This creates a web-app with these defaults:
 
-- the default pwa-template root
+- the default pwa-shell root
 - an HTTP/2 server capable of running locally that can serve your web app (just run `npm start`)
 - an initial package.json ready for you to modify with your app name (with the devDependency for this framework already included) and other app properties (repository, keywords, etc.)
 

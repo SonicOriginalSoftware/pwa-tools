@@ -2,14 +2,14 @@
 A component is a custom element made to take the boilerplating and monotony of Web Components and make it more straight-forward to jump into. It takes advantage of a number of different technologies including shadow elements, templates, and lazy-loading events.
 
 # Adding components
-To add components, run `npx @sonicoriginalsoftware/pwa-framework add-component $component`
+To add components, run `npx @sonicoriginalsoftware/pwa-tools add-component $component`
 
 With `$component` being the name of the component. Generally this is the folder name but see the Docs for that component.
 
-This will download the component source folder (containing a mixture of HTML files, CSS files, and JS files) and place the folder in your pwa-template `app/components` directory. From there, simply add the component name and path to the component folder to the `components` array that is passed in to the `load_components` function in the `init.js` file. More about that can be read [here](WORKFLOW.md#Component_Initialization)
+This will download the component source folder (containing a mixture of HTML files, CSS files, and JS files) and place the folder in your pwa-shell `app/components` directory. From there, simply add the component name and path to the component folder to the `components` array that is passed in to the `load_components` function in the `init.js` file. More about that can be read [here](WORKFLOW.md#Component_Initialization)
 
 # Removing components
-To remove components, run `npx @sonicoriginalsoftware/pwa-framework remove-component $component`
+To remove components, run `npx @sonicoriginalsoftware/pwa-tools remove-component $component`
 
 With `$component` being the name of the component. Again, this is generally the folder name but see the Docs to make sure.
 

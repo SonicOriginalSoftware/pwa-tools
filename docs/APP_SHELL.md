@@ -3,7 +3,7 @@ The app shell consists of two files: `sw.js` and the `app_manager.js`
 
 These two files along with the manifest.json are the core of what allows building progressive web apps without feeling so bloated from boilerplate.
 
-The javascript files reside in the `shell` directory and do not require intervention or editing by the user. Framework developers should instead be modifying the `config.js` file in the pwa-template root. If you find a use case wherein modifying the `sw.js` or `app_manager.js` is necessary please file an issue.
+The javascript files reside in the `shell` directory and do not require intervention or editing by the developer. Framework developers should instead be modifying the `config.js` file in the root directory. If you find a use case wherein modifying the `sw.js` or `app_manager.js` is necessary please file an issue.
 
 # Service Worker
 

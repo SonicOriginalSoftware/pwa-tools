@@ -2,7 +2,7 @@
 
 The framework is initialized via the [app manager](APP_SHELL.md#App_Manager). By "initialized" it is meant that the user-agent becomes aware of the app service worker (via a service worker registration).
 
-Upon successful service worker registration, there is a check to verify the service is valid. If that is successful, an attempt is made to communicate with the service worker to gain app information (app name and version). That information is used to populate document display information and then [components are registered](WORKFLOW.md#Component_Registration). Once components are registered there is a check for any [pending app updates](WORKFLOW#Progressive_Web_App_Updating) sitting in the background.
+Upon successful service worker registration, there is a check to verify the service is valid. If that is successful, an attempt is made to communicate with the service worker to gain app information (app name and version). That information is used to populate document display information and then [components are registered](WORKFLOW.md#Component_Registration). Once components are registered there is a check for any [pending app updates](WORKFLOW.md#Progressive_Web_App_Updating) sitting in the background.
 
 # Component Registration
 
