@@ -22,6 +22,6 @@ export const assertions = {
         async () => await extract(zip_stream, "./tests/outputs/")
       )
     },
-    skip: false,
+    skip: true,
   },
 }
