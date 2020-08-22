@@ -1,25 +1,25 @@
 import { strict as assert } from "assert"
 
-import { extract } from "../lib/extractor/extract.js"
+import { unzip } from "../lib/unzipper/unzip.js"
 import { readFileSync } from "fs"
 
-export const id = "Test extractor"
+export const id = "Test unzipper"
 
 const test_zip_path = "./tests/inputs/test.zip"
 
 export const assertions = {
-  "Extract test zip from path": {
+  "Unzip test zip from path": {
     function: async () =>
       assert.doesNotReject(
-        async () => await extract(test_zip_path, "./tests/outputs/")
+        async () => await unzip(test_zip_path, "./tests/outputs/")
       ),
     skip: false,
   },
-  "Extract test zip from stream": {
+  "Unzip test zip from stream": {
     function: async () => {
       const zip_stream = readFileSync(test_zip_path)
       assert.doesNotReject(
-        async () => await extract(zip_stream, "./tests/outputs/")
+        async () => await unzip(zip_stream, "./tests/outputs/")
       )
     },
     skip: true,
