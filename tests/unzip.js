@@ -9,7 +9,7 @@ const test_zip_path = "./tests/inputs/test.zip"
 
 export const assertions = {
   "Unzip test zip from path": {
-    function: async () =>
+    function: () =>
       assert.doesNotReject(
         async () => await unzip(test_zip_path, "./tests/outputs/")
       ),
