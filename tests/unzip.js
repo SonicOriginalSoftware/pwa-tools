@@ -1,27 +1,39 @@
 import { strict as assert } from "assert"
 
 import { unzip } from "../lib/unzipper/unzip.js"
-import { readFileSync } from "fs"
+import { readFileSync, rmdirSync } from "fs"
 
 export const id = "Test unzipper"
 
 const test_zip_path = "./tests/inputs/test.zip"
-// const test_zip_path = "./tests/inputs/pwa-server-default.zip"
+const deflate_zip_path = "./tests/inputs/pwa-server-default.zip"
+
+export function setUp() {
+  rmdirSync("./tests/outputs", { recursive: true })
+}
 
 export const assertions = {
-  "Unzip test zip from path": {
+  "Unzip test zip with stored compression from stream": {
     function: () => {
       assert.doesNotReject(() =>
-        unzip(test_zip_path, "./tests/outputs/test-zip")
+        unzip(readFileSync(test_zip_path), "./tests/outputs/test-zip")
       )
     },
-    skip: false,
-  },
-  "Unzip test zip from stream": {
-    function: async () => {
-      const zip_stream = readFileSync(test_zip_path)
-      assert.doesNotReject(() => unzip(zip_stream, "./tests/outputs/test-zip"))
-    },
     skip: true,
+  },
+  "Unzip test zip with deflate compression from stream": {
+    function: async () => {
+      try {
+        var unzipped_files = await unzip(
+          readFileSync(deflate_zip_path),
+          "./tests/outputs"
+        )
+        console.log("Got here!")
+      } catch (err) {
+        assert.fail(err)
+      }
+      console.log("Done!")
+    },
+    skip: false,
   },
 }
