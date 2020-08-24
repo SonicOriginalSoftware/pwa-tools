@@ -29,6 +29,7 @@ export const assertions = {
           "./tests/outputs"
         )
         console.log("Got here!")
+        console.log(unzipped_files)
       } catch (err) {
         assert.fail(err)
       }
