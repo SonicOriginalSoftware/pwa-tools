@@ -24,16 +24,10 @@ export const assertions = {
   "Unzip test zip with deflate compression from stream": {
     function: async () => {
       try {
-        var unzipped_files = await unzip(
-          readFileSync(deflate_zip_path),
-          "./tests/outputs"
-        )
-        console.log("Got here!")
-        console.log(unzipped_files)
+        await unzip(readFileSync(deflate_zip_path), "./tests/outputs")
       } catch (err) {
         assert.fail(err)
       }
-      console.log("Done!")
     },
     skip: false,
   },
