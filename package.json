@@ -15,9 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/sonicoriginalsoftware/pwa-tools.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "keywords": [
     "web",
     "componets",
@@ -35,5 +32,7 @@
     "@sonicoriginalsoftware/jester": "^0.2.5",
     "@types/node": "^14.0.27"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@sonicoriginalsoftware/unzipper": "^1.0.0"
+  }
 }
