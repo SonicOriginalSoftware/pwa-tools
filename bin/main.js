@@ -17,7 +17,6 @@ const options = {
  * @param {typeof options} options
  */
 function parse_option(argument, argument_index, options) {
-  const option_regex = /^\-+/g
   let value = process.argv[argument_index + 1]
 
   if (argument.includes("=")) {
@@ -26,7 +25,7 @@ function parse_option(argument, argument_index, options) {
     value = arg_split[1]
   }
 
-  switch (argument.replace(option_regex, "")) {
+  switch (argument.replace(/^\-+/g, "")) {
     case "pwa-shell-repository" || "p":
       options.pwa_shell_archive_url = value
       break
@@ -61,7 +60,7 @@ export async function main(argv_entries) {
         )
       } catch (err) {
         error(err)
-        process.exit(1)
+        process.exit(2)
       }
       info(
         `Initializing target directory (${options.target_directory}) complete!`
@@ -82,6 +81,7 @@ export async function main(argv_entries) {
     default:
       error(`Unknown command: ${command}`)
       info(usage)
+      process.exit(1)
   }
 }
 

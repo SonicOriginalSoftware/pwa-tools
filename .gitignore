@@ -4,4 +4,4 @@ node_modules
 **.zip
 pwa-server
 pwa-shell
-test-data/outputs
+test-data
