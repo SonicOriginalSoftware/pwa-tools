@@ -5,7 +5,8 @@
   "directories": {
     "bin": "bin",
     "lib": "lib",
-    "test": "test"
+    "test": "test",
+    "doc": "docs"
   },
   "scripts": {
     "test": "npx -n '--experimental-json-modules' @sonicoriginalsoftware/jester"

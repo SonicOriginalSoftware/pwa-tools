@@ -19,7 +19,7 @@ export const assertions = {
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
-    skip: true,
+    skip: false,
   },
   "Bogus argument given": {
     function: async () => {
@@ -33,7 +33,7 @@ export const assertions = {
       assert.match(stderr, /Unknown command: bogus/)
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
-    skip: true,
+    skip: false,
   },
   "Help command given": {
     function: async () => {
@@ -47,7 +47,7 @@ export const assertions = {
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
-    skip: true,
+    skip: false,
   },
   "Version command given": {
     function: async () => {
@@ -61,6 +61,6 @@ export const assertions = {
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), pkg.version)
     },
-    skip: true,
+    skip: false,
   },
 }

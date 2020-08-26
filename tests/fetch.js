@@ -5,6 +5,9 @@ import { fetch } from "../lib/net/http2_client.js"
 export const id = "Test network client"
 const timeout = 800
 const wiggle_room = 10
+const expected_content = Buffer.from(
+  "<html>\n<body>\nTest site!\n</body>\n</html>\n"
+)
 
 export const assertions = {
   "HTTP/2 Fetch test site": {
@@ -17,12 +20,9 @@ export const assertions = {
       } catch (err) {
         assert.fail(err)
       }
-      const expected_content = Buffer.from(
-        "<html>\n<body>\nTest site!\n</body>\n</html>\n"
-      )
       assert.deepStrictEqual(test_site_content.data, expected_content)
     },
-    skip: true,
+    skip: false,
   },
   "HTTP/2 Check timeout": {
     function: async () => {
@@ -42,7 +42,7 @@ export const assertions = {
         `${duration} > ${comparison}`
       )
     },
-    skip: true,
+    skip: false,
   },
   "HTTPS Fetch test site": {
     function: async () => {
@@ -50,9 +50,8 @@ export const assertions = {
         "https://sonicoriginalsoftware.github.io/test-site/",
         { timeout: timeout }
       )
-      const expected_content = "<html>\n<body>\nTest site!\n</body>\n</html>\n"
       assert.deepStrictEqual(test_site_content.data, expected_content)
     },
-    skip: true,
+    skip: false,
   },
 }

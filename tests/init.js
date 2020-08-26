@@ -8,12 +8,12 @@ export const assertions = {
   "Default Initialize": {
     function: async () =>
       assert.doesNotReject(async () =>
-        await init({
-          pwa_server_repository: "",
-          pwa_shell_repository: "",
-          target_directory: process.cwd(),
-        })
+        await init(
+          "https://github.com/sonicoriginalsoftware/pwa-shell/archive/default.zip",
+          "https://github.com/sonicoriginalsoftware/pwa-server/archive/default.zip",
+          "./test-data",
+        )
       ),
-    skip: true
+    skip: false
   },
 }
