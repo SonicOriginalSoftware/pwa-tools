@@ -3,5 +3,7 @@ node_modules
 **.log
 **.zip
 pwa-server
+server
 pwa-shell
+shell
 test-data

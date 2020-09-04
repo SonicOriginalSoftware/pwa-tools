@@ -52,6 +52,11 @@ export async function main(argv_entries, logger = console) {
       : (command = each_arg_value)
   }
 
+  // It may be wiser to use the pwa-tools help [command] syntax
+  // Then add a usage function into each command module and call that
+  // I think it may make more sense than to call into the main functionality of
+  // the module and then have that code do a bunch of argument parsing to
+  // determine if the user is just trying to figure out how to use the command
   switch (command) {
     case "init":
       try {
@@ -63,7 +68,6 @@ export async function main(argv_entries, logger = console) {
       } catch (err) {
         logger.error(err)
         process.exitCode = -2
-        // process.exit(2)
       }
       logger.info(
         `Initializing target directory (${options.target_directory}) complete!`
@@ -85,7 +89,6 @@ export async function main(argv_entries, logger = console) {
       logger.error(`Unknown command: ${command}`)
       logger.info(usage)
       process.exitCode = -1
-      // process.exit(1)
   }
 }
 

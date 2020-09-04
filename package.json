@@ -9,7 +9,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "npx -n '--experimental-json-modules' @sonicoriginalsoftware/jester"
+    "test": "node --experimental-json-modules node_modules/@sonicoriginalsoftware/jester/bin/jester.js"
   },
   "type": "module",
   "repository": {
