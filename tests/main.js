@@ -1,7 +1,6 @@
 import { strict as assert } from "assert"
 
-import { usage } from "../lib/usage.js"
-import { main } from "../bin/main.js"
+import { main, usage } from "../bin/main.js"
 import pkg from "../package.json"
 import { Console } from "console"
 import { PassThrough } from "stream"
@@ -21,7 +20,7 @@ export const assertions = {
 
       const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
 
-      await main(["", ""].entries(), logger)
+      await main(["", ""], logger)
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
@@ -39,9 +38,10 @@ export const assertions = {
 
       const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
 
-      await main(["", "", "bogus"].entries(), logger)
+      await main(["", "", "bogus"], logger)
       assert.match(stderr.trim(), /Unknown command: bogus/)
       assert.deepStrictEqual(stdout.trim(), usage.trim())
+      assert.deepStrictEqual(process.exitCode, -1)
     },
     skip: false,
   },
@@ -57,7 +57,7 @@ export const assertions = {
 
       const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
 
-      await main(["", "", "help"].entries(), logger)
+      await main(["", "", "help"], logger)
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
@@ -75,7 +75,7 @@ export const assertions = {
 
       const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
 
-      await main(["", "", "version"].entries(), logger)
+      await main(["", "", "version"], logger)
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), pkg.version)
     },
