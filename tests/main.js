@@ -3,21 +3,24 @@ import { strict as assert } from "assert"
 import { usage } from "../lib/usage.js"
 import { main } from "../bin/main.js"
 import pkg from "../package.json"
+import { Console } from "console"
+import { PassThrough } from "stream"
 
 export const id = "Test main function"
 
 export const assertions = {
   "No argument given": {
     function: async () => {
-      let stderr = ""
       let stdout = ""
-      process.stderr.on("data", data => {
-        stderr += data
-      })
-      process.stdout.on("data", data => {
-        stdout += data
-      })
-      await main([""].entries())
+      let stderr = ""
+      const stdout_stream = new PassThrough()
+      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      const stderr_stream = new PassThrough()
+      stderr_stream.on("data", (chunk) => (stderr += chunk))
+      await main(
+        ["", ""].entries(),
+        new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      )
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
@@ -25,15 +28,16 @@ export const assertions = {
   },
   "Bogus argument given": {
     function: async () => {
-      let stderr = ""
       let stdout = ""
-      process.stderr.on("data", data => {
-        stderr += data
-      })
-      process.stdout.on("data", data => {
-        stdout += data
-      })
-      await main(["bogus"].entries())
+      let stderr = ""
+      const stdout_stream = new PassThrough()
+      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      const stderr_stream = new PassThrough()
+      stderr_stream.on("data", (chunk) => (stderr += chunk))
+      await main(
+        ["", "", "bogus"].entries(),
+        new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      )
       assert.match(stderr.trim(), /Unknown command: bogus/)
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
@@ -41,15 +45,16 @@ export const assertions = {
   },
   "Help command given": {
     function: async () => {
-      let stderr = ""
       let stdout = ""
-      process.stderr.on("data", data => {
-        stderr += data
-      })
-      process.stdout.on("data", data => {
-        stdout += data
-      })
-      await main(["help"].entries())
+      let stderr = ""
+      const stdout_stream = new PassThrough()
+      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      const stderr_stream = new PassThrough()
+      stderr_stream.on("data", (chunk) => (stderr += chunk))
+      await main(
+        ["", "", "help"].entries(),
+        new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      )
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
@@ -57,15 +62,16 @@ export const assertions = {
   },
   "Version command given": {
     function: async () => {
-      let stderr = ""
       let stdout = ""
-      process.stderr.on("data", data => {
-        stderr += data
-      })
-      process.stdout.on("data", data => {
-        stdout += data
-      })
-      await main(["version"].entries())
+      let stderr = ""
+      const stdout_stream = new PassThrough()
+      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      const stderr_stream = new PassThrough()
+      stderr_stream.on("data", (chunk) => (stderr += chunk))
+      await main(
+        ["", "", "version"].entries(),
+        new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      )
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), pkg.version)
     },

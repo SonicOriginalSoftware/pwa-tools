@@ -1,5 +1,4 @@
 import { init } from "../lib/commands/init.js"
-import { info, error } from "../lib/logger/logger.js"
 import { usage } from "../lib/usage.js"
 import pkg from "../package.json"
 
@@ -38,8 +37,11 @@ function parse_option(argument, argument_index, options) {
   }
 }
 
-/** @param {IterableIterator<[Number, String]>} argv_entries */
-export async function main(argv_entries) {
+/**
+ * @param {IterableIterator<[Number, String]>} argv_entries
+ * @param {Console} [logger=console]
+ */
+export async function main(argv_entries, logger = console) {
   let command = "help"
 
   for (const [each_arg_index, each_arg_value] of argv_entries) {
@@ -59,28 +61,28 @@ export async function main(argv_entries) {
           options.target_directory
         )
       } catch (err) {
-        error(err)
+        logger.error(err)
         process.exit(2)
       }
-      info(
+      logger.info(
         `Initializing target directory (${options.target_directory}) complete!`
       )
       break
     case "add-component":
-      error("This command is not implemented yet!")
+      logger.error("This command is not implemented yet!")
       break
     case "remove-component":
-      error("This command is not implemented yet!")
+      logger.error("This command is not implemented yet!")
       break
     case "version":
-      info(pkg.version)
+      logger.info(pkg.version)
       break
     case "help" || "":
-      info(usage)
+      logger.info(usage)
       break
     default:
-      error(`Unknown command: ${command}`)
-      info(usage)
+      logger.error(`Unknown command: ${command}`)
+      logger.info(usage)
       process.exit(1)
   }
 }
