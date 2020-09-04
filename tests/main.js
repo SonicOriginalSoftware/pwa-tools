@@ -1,6 +1,6 @@
 import { strict as assert } from "assert"
 
-import { main, usage } from "../bin/main.js"
+import { main, usage } from "../lib/main.js"
 import pkg from "../package.json"
 import { Console } from "console"
 import { PassThrough } from "stream"

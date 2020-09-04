@@ -6,14 +6,7 @@ export const id = "Test init"
 
 export const assertions = {
   "Default Initialize": {
-    function: () =>
-      assert.doesNotReject(() =>
-        init(
-          "https://github.com/sonicoriginalsoftware/pwa-shell/archive/default.zip",
-          "https://github.com/sonicoriginalsoftware/pwa-server/archive/default.zip",
-          "./test-data"
-        )
-      ),
+    function: () => assert.doesNotReject(() => init(["-t", "./test-data"], console)),
     skip: true,
   },
 }
