@@ -62,7 +62,8 @@ export async function main(argv_entries, logger = console) {
         )
       } catch (err) {
         logger.error(err)
-        process.exit(2)
+        process.exitCode = -2
+        // process.exit(2)
       }
       logger.info(
         `Initializing target directory (${options.target_directory}) complete!`
@@ -83,7 +84,8 @@ export async function main(argv_entries, logger = console) {
     default:
       logger.error(`Unknown command: ${command}`)
       logger.info(usage)
-      process.exit(1)
+      process.exitCode = -1
+      // process.exit(1)
   }
 }
 
