@@ -5,7 +5,6 @@
   "directories": {
     "bin": "bin",
     "lib": "lib",
-    "test": "test",
     "doc": "docs"
   },
   "scripts": {

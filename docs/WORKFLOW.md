@@ -4,7 +4,19 @@ The framework is initialized via the [app manager](APP_SHELL.md#App_Manager). By
 
 Upon successful service worker registration, there is a check to verify the service is valid. If that is successful, an attempt is made to communicate with the service worker to gain app information (app name and version). That information is used to populate document display information and then [components are registered](WORKFLOW.md#Component_Registration). Once components are registered there is a check for any [pending app updates](WORKFLOW.md#Progressive_Web_App_Updating) sitting in the background.
 
+# Service Worker Initialization
+
+## Install
+
+TODO
+
+## Activation
+
+TODO
+
 # Component Registration
+
+TODO
 
 # Component Initialization
 
@@ -24,10 +36,14 @@ This results in a better app initialization time and is therefore more pleasing 
 
 An update to your "app" is signified through a change in the `sw.js` shell file by means of the `config.js` file. This may come as just an increment of the app version string or through explicit changes to data structures in the `config.js` file (like the files to be cached). When an app update is realized by the user-agent the user is prompted with a button and a notification in-app.
 
+# When is an app update realized?
+
+Upon the user refreshing or re-navigating back to your web-app, depending on your host's caching protocol and when the user's user-agent does a network request and byte-comparison of the `sw.js` and `config.js` files.
+
 # Progressive Web App Update Prompting
 
 The framework provides the means to give the user the option to update when they would like to.
 
-They are given express permission to not click this button until they are ready to do so; page reloads will not "update" the app - they will continue to provide the user with the same app version while also displaying the button to update (successive page reloads with an awaiting app update will not throw a notification up on the screen). The exception to this is reaching the Web App API storage thresholds - but you would never reach this, right? Because you're a responsible web app developer!
+They are given express permission to not click this button until they are ready to do so; page reloads will (by default, depending on the user's user-agent settings) not "update" the app - they will continue to provide the user with the same app version while also displaying the button to update (successive page reloads with an awaiting app update will not throw a notification up on the screen). The exception to this is reaching the Web App API storage thresholds - but you would never reach this, right? Because you're a responsible web app developer!
 
 When the user does choose to update the new app version is activated and the user's page is refreshed.

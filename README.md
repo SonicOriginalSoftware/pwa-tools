@@ -12,11 +12,9 @@ No. And yes. This framework tries to sift down the boilerplate and dependency he
 
 Yes! The unzipper I wrote from scratch and submitted back to the community to do with what they see fit. "Why didn't you just use an existing library!?!?!?!" Well, because the ones that are popular are abandoned and the ones that aren't abandoned I don't like! Simple as that!
 
-And when I say simple - I do mean...simple. The unzipper doesn't handle _every_ possible zip file case; but what it does handle it handles using about 550 LOC, >450 of which are boilerplate data structure code to represent the zip data structures. The actual unzipping behavior is all of ~80 LOC! All using pure, easy to understand async javascript!
-
 # NIH syndrome, much?
 
-Its javascript. If its more complicated than what can be done in the source files contained in this framework then it doesn't belong here. This framework strives for elegance, simplicity, and robustness while creating web applications that are more easily pivoted to the ever-changing landscape of the web.
+Its javascript. If its more complicated than what can be done in the source files contained in this framework then it doesn't belong here. This framework strives for elegance, simplicity, and robustness while creating web applications that are more easily pivoted to the ever-changing landscape of the web. At some point, developers need to drop the ideas of replacing one-liners with libraries and just write the code themselves.
 
 # BuT LeGaCy WeB ApPs ArE sTaBlE
 
