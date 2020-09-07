@@ -7,6 +7,6 @@ export const id = "Test init"
 export const assertions = {
   "Default Initialize": {
     function: () => assert.doesNotReject(() => init(["-t", "./test-data"], console)),
-    skip: true,
+    skip: false,
   },
 }
