@@ -28,7 +28,7 @@ export const assertions = {
   "Default Initialize": {
     function: async () => {
       try {
-        await init(["-t", "./test-data"], console)
+        await init(["-t", "./test-data", "-u", "./test-data/server"], console)
       } catch (err) {
         return assert.fail(err)
       }
