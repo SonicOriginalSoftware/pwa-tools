@@ -26,7 +26,14 @@ export const assertions = {
     skip: false,
   },
   "Default Initialize": {
-    function: () => assert.doesNotReject(() => init(["-t", "./test-data"], console)),
+    function: async () => {
+      try {
+        await init(["-t", "./test-data"], console)
+      } catch (err) {
+        return assert.fail(err)
+      }
+      return assert.ok(true)
+    },
     skip: false,
   },
 }
