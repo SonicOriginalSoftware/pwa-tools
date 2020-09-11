@@ -7,12 +7,12 @@ import { join } from "path"
 import { add_component, usage } from "../lib/commands/add_component.js"
 import { TEST_DATA } from "./test_data.js"
 
-export const id = "Test init"
+export const id = "Test add component"
 
 const add_component_dir = join(TEST_DATA, "add-component")
 
 export const assertions = {
-  "Show Add-Component help": {
+  "Show add-component help": {
     function: () => {
       let stdout = ""
       let stderr = ""

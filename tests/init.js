@@ -12,7 +12,7 @@ export const id = "Test init"
 const init_dir = join(TEST_DATA, "init")
 
 export const assertions = {
-  "Show Initialize help": {
+  "Show init help": {
     function: () => {
       let stdout = ""
       let stderr = ""
@@ -33,7 +33,7 @@ export const assertions = {
     },
     skip: false,
   },
-  "Default Initialize": {
+  "Default init": {
     function: async () => {
       await rmdir(init_dir, { recursive: true })
 
@@ -44,6 +44,6 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: true,
+    skip: false,
   },
 }
