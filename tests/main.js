@@ -18,7 +18,10 @@ export const assertions = {
       const stderr_stream = new PassThrough()
       stderr_stream.on("data", (chunk) => (stderr += chunk))
 
-      const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      const logger = new Console({
+        stdout: stdout_stream,
+        stderr: stderr_stream,
+      })
 
       await main(["", ""], logger)
       assert.deepStrictEqual(stderr.trim(), "")
@@ -36,7 +39,10 @@ export const assertions = {
       const stderr_stream = new PassThrough()
       stderr_stream.on("data", (chunk) => (stderr += chunk))
 
-      const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      const logger = new Console({
+        stdout: stdout_stream,
+        stderr: stderr_stream,
+      })
 
       await main(["", "", "bogus"], logger)
       assert.match(stderr.trim(), /Unknown command: bogus/)
@@ -55,7 +61,10 @@ export const assertions = {
       const stderr_stream = new PassThrough()
       stderr_stream.on("data", (chunk) => (stderr += chunk))
 
-      const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      const logger = new Console({
+        stdout: stdout_stream,
+        stderr: stderr_stream,
+      })
 
       await main(["", "", "help"], logger)
       assert.deepStrictEqual(stderr.trim(), "")
@@ -73,7 +82,10 @@ export const assertions = {
       const stderr_stream = new PassThrough()
       stderr_stream.on("data", (chunk) => (stderr += chunk))
 
-      const logger = new Console({ stdout: stdout_stream, stderr: stderr_stream })
+      const logger = new Console({
+        stdout: stdout_stream,
+        stderr: stderr_stream,
+      })
 
       await main(["", "", "version"], logger)
       assert.deepStrictEqual(stderr.trim(), "")
