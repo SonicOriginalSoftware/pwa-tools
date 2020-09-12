@@ -1,44 +1,47 @@
-import { strict as assert } from "assert"
-import { PassThrough } from "stream"
-import { Console } from "console"
-import { rmdir } from "fs/promises"
-import { join } from "path"
+import { strict as assert } from 'assert'
+import { PassThrough } from 'stream'
+import { Console } from 'console'
+import { rmdir } from 'fs/promises'
+import { join } from 'path'
 
-import { add_resource, usage } from "../lib/commands/add_resource.js"
-import { TEST_DATA } from "./test_data.js"
+import { add_resource, usage } from '../lib/commands/add_resource.js'
+import { TEST_DATA } from './test_data.js'
 
-export const id = "Test add component"
+export const id = 'Test add component'
 
-const add_component_dir = join(TEST_DATA, "add-component")
+const add_resource_dir = join(TEST_DATA, 'add-resource')
 
 export const assertions = {
-  "Show add-component help": {
+  'Show add-component help': {
     function: () => {
-      let stdout = ""
-      let stderr = ""
+      let stdout = ''
+      let stderr = ''
 
       const stdout_stream = new PassThrough()
-      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      stdout_stream.on('data', (chunk) => (stdout += chunk))
       const stderr_stream = new PassThrough()
-      stderr_stream.on("data", (chunk) => (stderr += chunk))
+      stderr_stream.on('data', (chunk) => (stderr += chunk))
 
       const logger = new Console({
         stdout: stdout_stream,
         stderr: stderr_stream,
       })
 
-      assert.doesNotReject(() => add_resource(["help"], logger))
-      assert.deepStrictEqual(stderr.trim(), "")
+      assert.doesNotReject(() => add_resource(['help'], logger))
+      assert.deepStrictEqual(stderr.trim(), '')
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
     skip: false,
   },
-  "Add test toast-lane component": {
+  'Add test toast-lane component': {
     function: async () => {
-      await rmdir(add_component_dir, { recursive: true })
+      await rmdir(add_resource_dir, { recursive: true })
 
       try {
-        await add_resource(["-n", "toast-lane", "-p", add_component_dir], console)
+        await add_resource(
+          ['-t', 'component', '-n', 'toast-lane', '-p', add_resource_dir],
+          console
+        )
       } catch (err) {
         return assert.fail(err)
       }
