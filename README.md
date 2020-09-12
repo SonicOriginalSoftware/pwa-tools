@@ -22,7 +22,7 @@ Sure, so is IE11.
 
 # What dependencies does this require?
 
-Only a recent version of `npm`/`npx` (`13.5`+, ideally `14.0`+) and `git`
+Only a recent version of `npm`/`npx` (`13.5`+, ideally `14.0`+)
 
 # Fine. How do I use it?
 
