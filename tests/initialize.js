@@ -12,7 +12,7 @@ export const id = "Test resource initialization"
 const init_dir = join(TEST_DATA, "init")
 
 // FIXME These need archive URLs added!
-// And be sure to cache the default init
+// And be sure to cache either the IndexedDB or toast-lane to verify behavior (or both)
 
 export const assertions = {
   "Show init help": {
@@ -65,12 +65,15 @@ export const assertions = {
     },
     skip: false,
   },
-  "Add IndexedDB library": {
+  "Add cached IndexedDB library": {
     function: async () => {
       await rmdir(init_dir, { recursive: true })
 
       try {
-        await initialize(["-t", init_dir, "-p", "lib/indexedDB"], console)
+        await initialize(
+          ["--cache", "-t", init_dir, "-p", "lib/indexedDB"],
+          console
+        )
       } catch (err) {
         return assert.fail(err)
       }
