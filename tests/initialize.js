@@ -4,15 +4,18 @@ import { Console } from "console"
 import { rmdir } from "fs/promises"
 import { join } from "path"
 
-import { add_resource, usage } from "../lib/commands/add_resource.js"
+import { initialize, usage } from "../lib/commands/initialize.js"
 import { TEST_DATA } from "./test_data.js"
 
-export const id = "Test add component"
+export const id = "Test resource initialization"
 
-const add_resource_dir = join(TEST_DATA, "add-resource")
+const init_dir = join(TEST_DATA, "init")
+
+// FIXME These need archive URLs added!
+// And be sure to cache the default init
 
 export const assertions = {
-  "Show add-resource help": {
+  "Show init help": {
     function: () => {
       let stdout = ""
       let stderr = ""
@@ -27,26 +30,32 @@ export const assertions = {
         stderr: stderr_stream,
       })
 
-      assert.doesNotReject(() => add_resource(["help"], logger))
+      assert.doesNotReject(() => initialize(["help"], logger))
       assert.deepStrictEqual(stderr.trim(), "")
       assert.deepStrictEqual(stdout.trim(), usage.trim())
     },
     skip: false,
   },
-  "Add toast-lane component": {
+  "Default init": {
     function: async () => {
-      await rmdir(add_resource_dir, { recursive: true })
+      await rmdir(init_dir, { recursive: true })
 
       try {
-        await add_resource(
-          [
-            "-t",
-            "component",
-            "-n",
-            "toast-lane",
-            "-p",
-            join(add_resource_dir, "components"),
-          ],
+        await initialize(["--defaults", "-t", init_dir, "-p", "./"], console)
+      } catch (err) {
+        return assert.fail(err)
+      }
+      return assert.ok(true)
+    },
+    skip: false,
+  },
+  "Add toast-lane component": {
+    function: async () => {
+      await rmdir(init_dir, { recursive: true })
+
+      try {
+        await initialize(
+          ["-t", init_dir, "-p", "components/toast-lane"],
           console
         )
       } catch (err) {
@@ -58,13 +67,10 @@ export const assertions = {
   },
   "Add IndexedDB library": {
     function: async () => {
-      await rmdir(add_resource_dir, { recursive: true })
+      await rmdir(init_dir, { recursive: true })
 
       try {
-        await add_resource(
-          ["-t", "lib", "-n", "indexedDB", "-p", join(add_resource_dir, "lib")],
-          console
-        )
+        await initialize(["-t", init_dir, "-p", "lib/indexedDB"], console)
       } catch (err) {
         return assert.fail(err)
       }

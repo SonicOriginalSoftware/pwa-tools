@@ -6,7 +6,7 @@ Use this page to get a diving-in point on how to build a web app with this frame
 
 The user-centric side of the framework is oriented towards the CLI toolkit. To initialize a web app using this framework run:
 
-`npx @sonicoriginalsoftware/pwa-tools init`
+`npx @sonicoriginalsoftware/pwa-tools init --defaults`
 
 This creates a web-app with these defaults:
 
@@ -17,7 +17,7 @@ This creates a web-app with these defaults:
 
 ### Okay. Then what? There's nothing on my page. Just a shell of a progressive web app!
 
-Exactly! It is essential that no assumptions but the absolute necessary ones are made about the app you want to build. The framework makes it trivial though to start the addition of components and their customization for the needs of your app.
+Exactly! It is essential that no assumptions but the absolute necessary ones are made about the app you want to build. The framework makes it trivial though to add functionality to your app by the addition of components and their customization for the needs of your app.
 
 # Components
 
