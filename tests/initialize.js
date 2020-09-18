@@ -39,7 +39,6 @@ export const assertions = {
   },
   "Default init": {
     function: async () => {
-      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(["--defaults", "-t", init_dir, "-p", "./"], console)
       } catch (err) {
@@ -47,11 +46,10 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: false,
+    skip: true,
   },
   "Add toast-lane component": {
     function: async () => {
-      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(
           [
@@ -73,7 +71,6 @@ export const assertions = {
   },
   "Add cached IndexedDB library": {
     function: async () => {
-      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(
           [
@@ -92,6 +89,8 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: false,
+    skip: true,
   },
 }
+
+rmdirSync(init_dir, { recursive: true })
