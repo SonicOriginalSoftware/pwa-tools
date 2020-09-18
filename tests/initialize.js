@@ -1,7 +1,7 @@
 import { strict as assert } from "assert"
 import { PassThrough } from "stream"
 import { Console } from "console"
-import { rmdir } from "fs/promises"
+import { rmdirSync } from "fs"
 import { join } from "path"
 
 import {
@@ -14,9 +14,6 @@ import { TEST_DATA_DIR } from "./test_data.js"
 export const id = "Test resource initialization"
 
 const init_dir = join(TEST_DATA_DIR, "init")
-
-// FIXME These need archive URLs added!
-// And be sure to cache either the IndexedDB or toast-lane to verify behavior (or both)
 
 export const assertions = {
   "Show init help": {
@@ -42,6 +39,7 @@ export const assertions = {
   },
   "Default init": {
     function: async () => {
+      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(["--defaults", "-t", init_dir, "-p", "./"], console)
       } catch (err) {
@@ -53,6 +51,7 @@ export const assertions = {
   },
   "Add toast-lane component": {
     function: async () => {
+      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(
           [
@@ -74,6 +73,7 @@ export const assertions = {
   },
   "Add cached IndexedDB library": {
     function: async () => {
+      rmdirSync(init_dir, { recursive: true })
       try {
         await initialize(
           [
