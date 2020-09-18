@@ -1,1 +1,1 @@
-export const TEST_DATA = "./test-data"
+export const TEST_DATA_DIR = "./test-data"

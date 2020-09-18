@@ -4,12 +4,16 @@ import { Console } from "console"
 import { rmdir } from "fs/promises"
 import { join } from "path"
 
-import { initialize, usage } from "../lib/commands/initialize.js"
-import { TEST_DATA } from "./test_data.js"
+import {
+  initialize,
+  usage,
+  sos_resources_url,
+} from "../lib/commands/initialize.js"
+import { TEST_DATA_DIR } from "./test_data.js"
 
 export const id = "Test resource initialization"
 
-const init_dir = join(TEST_DATA, "init")
+const init_dir = join(TEST_DATA_DIR, "init")
 
 // FIXME These need archive URLs added!
 // And be sure to cache either the IndexedDB or toast-lane to verify behavior (or both)
@@ -38,8 +42,6 @@ export const assertions = {
   },
   "Default init": {
     function: async () => {
-      await rmdir(init_dir, { recursive: true })
-
       try {
         await initialize(["--defaults", "-t", init_dir, "-p", "./"], console)
       } catch (err) {
@@ -51,11 +53,16 @@ export const assertions = {
   },
   "Add toast-lane component": {
     function: async () => {
-      await rmdir(init_dir, { recursive: true })
-
       try {
         await initialize(
-          ["-t", init_dir, "-p", "components/toast-lane"],
+          [
+            "-r",
+            sos_resources_url,
+            "-t",
+            init_dir,
+            "-p",
+            "components/toast-lane",
+          ],
           console
         )
       } catch (err) {
@@ -67,11 +74,17 @@ export const assertions = {
   },
   "Add cached IndexedDB library": {
     function: async () => {
-      await rmdir(init_dir, { recursive: true })
-
       try {
         await initialize(
-          ["--cache", "-t", init_dir, "-p", "lib/indexedDB"],
+          [
+            "-r",
+            sos_resources_url,
+            "--cache",
+            "-t",
+            init_dir,
+            "-p",
+            "lib/indexedDB",
+          ],
           console
         )
       } catch (err) {
