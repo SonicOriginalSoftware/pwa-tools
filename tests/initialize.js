@@ -46,7 +46,7 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: true,
+    skip: false,
   },
   "Add toast-lane component": {
     function: async () => {
@@ -55,6 +55,7 @@ export const assertions = {
           [
             "-r",
             sos_resources_url,
+            "--cache",
             "-t",
             init_dir,
             "-p",
@@ -67,7 +68,7 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: false,
+    skip: true,
   },
   "Add cached IndexedDB library": {
     function: async () => {
