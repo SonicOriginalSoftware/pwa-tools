@@ -4,11 +4,7 @@ import { Console } from "console"
 import { rmdirSync } from "fs"
 import { join } from "path"
 
-import {
-  initialize,
-  usage,
-  sos_resources_url,
-} from "../lib/commands/initialize.js"
+import { initialize, usage } from "../lib/commands/initialize.js"
 import { TEST_DATA_DIR } from "./test_data.js"
 
 export const id = "Test resource initialization"
@@ -94,14 +90,7 @@ export const assertions = {
     function: async () => {
       try {
         await initialize(
-          [
-            ".",
-            "--cache",
-            "-t",
-            join(init_dir, "app"),
-            "-p",
-            "lib/indexedDB",
-          ],
+          [".", "--cache", "-t", join(init_dir, "app"), "-p", "lib/indexedDB"],
           console
         )
       } catch (err) {

@@ -9,32 +9,10 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "Debug Node",
-        "program": "${workspaceFolder}/bin/main.js",
-        "args": [],
-        "runtimeArgs": ["--experimental-json-modules"],
-        "request": "launch",
-        "skipFiles": [
-          "<node_internals>/**"
-        ],
-        "type": "node"
-      },
-      {
-        "name": "Debug Init",
-        "program": "${workspaceFolder}/bin/main.js",
-        "args": ["init", ],
-        "runtimeArgs": ["--experimental-json-modules"],
-        "request": "launch",
-        "skipFiles": [
-          "<node_internals>/**"
-        ],
-        "type": "node"
-      },
-      {
         "name": "Debug Tests",
         "program": ".\\node_modules\\@sonicoriginalsoftware\\jester\\bin\\jester.js",
         "args": [],
-        "runtimeArgs": ["--experimental-json-modules"],
+        "runtimeArgs": [],
         "request": "launch",
         "skipFiles": [
           "<node_internals>/**"
