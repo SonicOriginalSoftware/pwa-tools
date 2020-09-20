@@ -40,7 +40,7 @@ export const assertions = {
   "Default init": {
     function: async () => {
       try {
-        await initialize(["--defaults", "-t", init_dir, "-p", "./"], console)
+        await initialize(["--defaults", "-t", init_dir], console)
       } catch (err) {
         return assert.fail(err)
       }
