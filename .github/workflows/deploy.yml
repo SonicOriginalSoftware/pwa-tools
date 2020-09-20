@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Clone the production branch
         run: |
-          git clone --branch=${{ github.head_ref }} --depth=1 https://${{ github.actor }}:${{ github.token}}@github.com/${{ github.repository }} .
+          git clone --branch=${{ github.base_ref }} --depth=1 https://${{ github.actor }}:${{ github.token}}@github.com/${{ github.repository }} .
           git config user.name ${{ github.actor }}
           git config user.email ${{ github.actor }}@noreply.github.com
 
@@ -22,13 +22,13 @@ jobs:
         run: |
           head_branch=${{ github.head_ref }}
           tag=${head_branch#release\/}
-          version=${tag#v}
-          npm version $version
           echo "::set-env name=TAG::${tag}"
+
+          npm version ${tag##v}
 
       - name: Push back to production branch
         run: |
-          git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git production
+          git push
           git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git ${TAG}
 
       - name: Publish
