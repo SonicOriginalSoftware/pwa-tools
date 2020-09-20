@@ -22,7 +22,7 @@ jobs:
 
       - name: Clone the branch
         run: |
-          git clone --branch=${{ github.head_ref }} --depth=1 ${{ github.repositoryUrl }} .
+          git clone --branch=${{ github.head_ref }} --depth=1 https://${{ github.actor }}:${{ github.token}}@github.com/${{ github.repository }} .
 
       - name: Get the live package version
         run: |
