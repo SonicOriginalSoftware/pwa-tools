@@ -1,6 +1,6 @@
 {
   "name": "@sonicoriginalsoftware/pwa-tools",
-  "version": "0.3.6-alpha",
+  "version": "0.3.7-alpha",
   "description": "Command line tools for managing the pwa-framework",
   "bin": "bin/pwa-tools.js",
   "main": "lib/main.js",
