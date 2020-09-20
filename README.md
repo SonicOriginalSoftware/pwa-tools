@@ -18,7 +18,7 @@ Its javascript. At some point, developers need to drop the idea of replacing one
 
 # What system dependencies does this require?
 
-Only a recent version of `npm`/`npx` (`13.5`+, ideally `14.0`+).
+`npm`/`npx` version 7+
 
 # What package dependencies does this require?
 
