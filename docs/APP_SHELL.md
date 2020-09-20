@@ -1,4 +1,5 @@
 # The App Shell
+
 The app shell consists of two files: `sw.js` and the `app_manager.js`
 
 These two files along with the manifest.json are the core of what allows building progressive web apps without feeling so bloated from boilerplate.

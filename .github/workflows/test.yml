@@ -12,13 +12,15 @@ jobs:
     steps:
       - name: Clone the PR branch
         run: |
-          git clone --branch=${{ github.head_ref }} --depth=1 ${{ github.repositoryUrl }} .
-          git config user.name ${{ github.actor }}
-          git config user.email ${{ github.actor }}@noreply.github.com
+          git clone --branch=${{ github.head_ref }} --depth=1 https://${{ github.actor }}:${{ github.token}}@github.com/${{ github.repository }} .
 
       - uses: actions/setup-node@v1
         with:
           node-version: '14.x'
+
+      - name: Install package dependencies
+        run: |
+          npm ci
 
       - name: Test
         run: |
