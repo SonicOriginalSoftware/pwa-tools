@@ -57,7 +57,7 @@ export const assertions = {
             sos_resources_url,
             "--cache",
             "-t",
-            init_dir,
+            join(init_dir, "app"),
             "-p",
             "components/toast-lane",
           ],
@@ -68,7 +68,7 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: true,
+    skip: false,
   },
   "Add cached IndexedDB library": {
     function: async () => {
@@ -79,7 +79,7 @@ export const assertions = {
             sos_resources_url,
             "--cache",
             "-t",
-            init_dir,
+            join(init_dir, "app"),
             "-p",
             "lib/indexedDB",
           ],
@@ -90,7 +90,7 @@ export const assertions = {
       }
       return assert.ok(true)
     },
-    skip: true,
+    skip: false,
   },
 }
 
