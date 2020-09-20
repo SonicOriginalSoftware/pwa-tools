@@ -1,4 +1,4 @@
-name: deploy
+name: Deploy
 
 on:
   pull_request:
@@ -18,15 +18,18 @@ jobs:
           git config user.name ${{ github.actor }}
           git config user.email ${{ github.actor }}@noreply.github.com
 
-      - name: Set version on production branch and push
+      - name: Set version on production branch
         run: |
           head_branch=${{ github.head_ref }}
           tag=${head_branch#release\/}
           version=${tag#v}
           npm version $version
+          echo "::set-env name=TAG::${tag}"
 
+      - name: Push back to production branch
+        run: |
           git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git production
-          git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git $tag
+          git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git ${TAG}
 
       - name: Publish
         run: |
