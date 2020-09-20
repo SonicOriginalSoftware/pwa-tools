@@ -10,7 +10,7 @@ No. And yes. This framework tries to sift down the boilerplate and dependency he
 
 # NIH syndrome, much?
 
-Its javascript. If its more complicated than what can be done in the source files contained in this framework then it doesn't belong here. This framework strives for elegance, simplicity, and robustness while creating web applications that are more easily pivoted to the ever-changing landscape of the web. At some point, developers need to drop the idea of replacing one-liners with libraries and just write the code themselves.
+Its javascript. At some point, developers need to drop the idea of replacing one-liners with libraries and just write the code themselves.
 
 # What system dependencies does this require?
 
