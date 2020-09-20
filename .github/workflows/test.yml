@@ -1,0 +1,25 @@
+name: PR Test
+
+on:
+  pull_request:
+    branches: 'production'
+    types: [synchronize, opened, reopened, edited, unlocked]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone the PR branch
+        run: |
+          git clone --branch=${{ github.head_ref }} --depth=1 ${{ github.repositoryUrl }} .
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@noreply.github.com
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Test
+        run: |
+          npm test

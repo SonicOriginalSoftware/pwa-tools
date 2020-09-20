@@ -1,0 +1,35 @@
+name: deploy
+
+on:
+  pull_request:
+    branches: 'production'
+    types: [closed]
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone the production branch
+        run: |
+          git clone --branch=production --depth=1 ${{ github.repositoryUrl }} .
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@noreply.github.com
+
+      - name: Set version on production branch and push
+        run: |
+          head_branch=${{ github.head_ref }}
+          tag=${head_branch#release\/}
+          version=${tag#v}
+          npm version $version
+
+          git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git production
+          git push https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git $tag
+
+      - name: Publish
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${{ secrets.npm_token }}"
+          npm publish
+

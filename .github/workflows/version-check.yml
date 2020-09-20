@@ -1,0 +1,57 @@
+name: Version Check
+
+on:
+  pull_request:
+    branches: 'production'
+    types: [opened, reopened, edited, unlocked]
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check that the version has the correct prefix
+        run: |
+          head_branch=${{ github.head_ref }}
+          [[ ${head_branch:0:9} == 'release/v' ]]
+
+      - name: Set the version
+        run: |
+          head_branch=${{ github.head_ref }}
+          echo "::set-env name=VERSION::${head_branch#release\/v}"
+
+      - name: Clone the branch
+        run: |
+          git clone --branch=${{ github.head_ref }} --depth=1 ${{ github.repositoryUrl }} .
+
+      - name: Get the live package version
+        run: |
+          repoName=$(awk '/name/ { print $3 }' RS=',\n' package.json)
+          packageVer=$(npm view ${repoName//\"/} version)
+
+          echo "::set-env name=PACKAGE_VER::$packageVer"
+
+      - name: Check that the filtered version is not the same as the live package version
+        run: |
+          [[ $VERSION != $PACKAGE_VER ]]
+
+      - name: Check that the filtered version is a valid semver string
+        run: |
+          npx semver $VERSION
+
+      - name: Check that the filtered version is greater than the live package version
+        run: |
+          sorted=$(npx semver $VERSION $PACKAGE_VER)
+
+          checkSort="$PACKAGE_VER
+          $VERSION"
+
+          echo Sorted:
+          echo $sorted
+          echo
+          echo Checked Sort:
+          echo $checkSort
+
+          # Verify that the order is correct
+          [[ $sorted == $checkSort ]]
+
