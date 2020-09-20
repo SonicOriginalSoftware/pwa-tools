@@ -1,0 +1,8 @@
+*.code-workspace
+.github
+docs
+tests
+test-data
+coverage
+tsconfig.json
+README.md
