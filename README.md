@@ -4,6 +4,10 @@
 
 This package is a toolkit to build single-page progressive web applications.
 
+## Status
+
+Currently still in alpha-functionality. This tools repository is effectively functional for what it alone is meant to do. But the shell and components are still not fully functional.
+
 # Another framework?
 
 No. And yes. This framework tries to sift down the boilerplate and dependency hell by being (almost) fully self-contained. Its not "another javascript front-end framework"; this actually builds forward-looking progressive web apps.
