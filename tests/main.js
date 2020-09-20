@@ -1,9 +1,11 @@
 import { strict as assert } from "assert"
 
 import { main, usage } from "../lib/main.js"
-import pkg from "../package.json"
 import { Console } from "console"
 import { PassThrough } from "stream"
+import { readFileSync } from "fs"
+
+const pkg = JSON.parse(readFileSync("./package.json").toString("utf-8"))
 
 export const id = "Test main function"
 

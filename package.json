@@ -9,7 +9,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "node --experimental-json-modules node_modules/@sonicoriginalsoftware/jester/bin/jester.js"
+    "test": "node node_modules/@sonicoriginalsoftware/jester/bin/jester.js"
   },
   "type": "module",
   "repository": {
@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/sonicoriginalsoftware/pwa-tools#readme",
   "devDependencies": {
-    "@sonicoriginalsoftware/jester": "^0.2.5",
-    "@types/node": "^14.0.27"
+    "@sonicoriginalsoftware/jester": "^0.2.6",
+    "@types/node": "^14.11.1"
   },
   "dependencies": {
     "@sonicoriginalsoftware/unzipper": "^1.0.0"
