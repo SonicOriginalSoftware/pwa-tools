@@ -16,6 +16,27 @@ export const id = "Test resource initialization"
 const init_dir = join(TEST_DATA_DIR, "init")
 
 export const assertions = {
+  "Initialize with no arguments": {
+    function: () => {
+      let stdout = ""
+      let stderr = ""
+
+      const stdout_stream = new PassThrough()
+      stdout_stream.on("data", (chunk) => (stdout += chunk))
+      const stderr_stream = new PassThrough()
+      stderr_stream.on("data", (chunk) => (stderr += chunk))
+
+      const logger = new Console({
+        stdout: stdout_stream,
+        stderr: stderr_stream,
+      })
+
+      assert.doesNotReject(() => initialize([], logger))
+      assert.deepStrictEqual(stderr.trim(), "")
+      assert.deepStrictEqual(stdout.trim(), usage.trim())
+    },
+    skip: false,
+  },
   "Show init help": {
     function: () => {
       let stdout = ""
@@ -40,7 +61,7 @@ export const assertions = {
   "Default init": {
     function: async () => {
       try {
-        await initialize(["--defaults", "-t", init_dir], console)
+        await initialize(["*", "-t", init_dir], console)
       } catch (err) {
         return assert.fail(err)
       }
@@ -53,8 +74,7 @@ export const assertions = {
       try {
         await initialize(
           [
-            "-r",
-            sos_resources_url,
+            ".",
             "--cache",
             "-t",
             join(init_dir, "app"),
@@ -75,8 +95,7 @@ export const assertions = {
       try {
         await initialize(
           [
-            "-r",
-            sos_resources_url,
+            ".",
             "--cache",
             "-t",
             join(init_dir, "app"),
