@@ -10,7 +10,7 @@ The user-centric side of the framework is oriented towards the CLI toolkit. To i
 
 This creates a web-app with these defaults:
 
-- the default pwa-shell root with an initial package.json ready for you to modify with your app name and other app properties (repository, keywords, etc.)
+- the default pwa-shell
 - an HTTP/2 server capable of running locally (and possibly in the cloud with some tweaking) that can serve your web app
 
 # Loading
