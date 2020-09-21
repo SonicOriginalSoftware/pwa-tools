@@ -6,7 +6,7 @@ Use this page to get a diving-in point on how to build a web app with this frame
 
 The user-centric side of the framework is oriented towards the CLI toolkit. To initialize a web app using this framework run:
 
-`npx @sonicoriginalsoftware/pwa-tools init --defaults`
+`npx --node-options "--experimental-json-modules" @sonicoriginalsoftware/pwa-tools init * -t ./new-site`
 
 This creates a web-app with these defaults:
 
